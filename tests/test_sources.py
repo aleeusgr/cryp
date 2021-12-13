@@ -18,3 +18,9 @@ def test_binance():
     client = binance.auth()
     data = binance.fetch_candles(client)
     assert isinstance(data, pd.DataFrame)
+
+def test_ff5():
+    from  data.sources.famafrench import ff5
+    import pandas as pd
+    df = ff5()
+    assert isinstance(df, pd.DataFrame)

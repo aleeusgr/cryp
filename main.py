@@ -4,11 +4,20 @@ import bokeh
 import matplotlib.pyplot as plt
 #import pylab
 #from  data.sources.market import moex, binance 
-import pandas_datareader as pdr
+from  data.sources.famafrench import *
 #import pandas_ta as ta
+import pandas_datareader as pdr
 import talib
 from utility import *
 
 dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".split(sep = ', ')
+#stock = Asset(dk_discount[0])
 
 df = read_h5()
+fama_french = ff5()
+
+#price data
+symbol = dk_discount[0]
+start, end = (fama_french.index[i].strftime('%Y-%m-%d') for i in(0,-1))
+df = pdr.DataReader(f'{symbol}', 'yahoo', start, end)
+df = df.resample('M').last()

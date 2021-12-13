@@ -30,3 +30,11 @@ def read_h5(START = 2011,END = 2018):
         result = (store['sp500/stocks']) # seems better then us_equities/stocks, but no market cap
         #result = store['us_equities/stocks']# ['marketcap', 'ipoyear', 'sector']] #time = 1s
     return  result
+
+
+class Asset(object):
+    # Assets: equity, FX, coin, 
+    def __init__(self, symbol):
+        self.symbol = symbol
+    def get_symbol(self):
+        return self.symbol
