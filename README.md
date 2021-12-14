@@ -19,6 +19,8 @@
 ## Data, Cleaning:
 * pandas: OK
 * sklearn imputer
+* fourier
+* pykalman
 
 ## Feature Engineering
 * momentum, value, investment, QmJ, # T/S momentum, Moscowitz 2012
@@ -35,7 +37,7 @@
 * FF5 for moex?
 * heterogeneous agent, Hommes
 * representativeness, 
-* network effects:  
+* network effects: search  
 
 ## Backtesting
 * Zipline: ingest binance.
