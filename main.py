@@ -23,9 +23,13 @@ df = pdr.DataReader(f'{symbol}', 'yahoo', start, end)
 df = df.resample('M').last()
 df['returns'] = df['Adj Close'].pct_change()
 
-X = fama_french[:-1].to_numpy()
-y = df.returns[1:].to_numpy()
+fama_french[f'{symbol}'] = df.returns
+
+
+X = fama_french.iloc[1:,:-2].to_numpy()
+y = fama_french.iloc[1:,-1].to_numpy()
 import statsmodels.api as sm
 X_ols = sm.add_constant(X)
 model = sm.OLS(y, X_ols).fit()
 print(model.summary())
+
