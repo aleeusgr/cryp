@@ -9,10 +9,9 @@ import talib
 #from  data.sources.fundamental.famafrench import five_factor
 #import pandas_ta as ta
 from data.wrappers import Equity
-from utility import candles, timer_func
+from utility import  timer_func
 
 dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".split(sep = ', ')
 
 stock = Equity(dk_discount[0])
-stock.load_prices()
 
