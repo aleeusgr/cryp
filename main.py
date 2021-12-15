@@ -15,3 +15,18 @@ dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".
 
 stock = Equity(dk_discount[0])
 
+# momentum at the daily and weekly frequencies
+df = stock.get_price_data()
+
+data = df.loc[:, 'returns']
+up,mid,low = stock.bbands()
+figure, axis = plt.subplots(2, 1)
+for i in (data,up,mid,low):
+    
+    axis[0].plot(i)
+
+axis[1].plot(data.pct_change())
+
+
+plt.show()
+
