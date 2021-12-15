@@ -1,4 +1,7 @@
 # cryp, Roadmap
+1. decompose Equity, fetch -> data/sources/market/
+2. tests for fetch
+3. test Feng&Yulong
 
 ## Data, sources
 Macro datasets? <br>
@@ -12,7 +15,6 @@ remember notes on /fin: data sources and datasets.
 * MOEX: apimoex, change to pdr??
 * binance: OK
 * quandl: OK #reduce read time for asset.h5
-
 
 ### Alt
 * sentiment
