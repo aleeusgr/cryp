@@ -22,7 +22,7 @@ remember notes on /fin: data sources and datasets.
 
 ## Data, Cleaning:
 * pandas: OK
-* sklearn imputer
+* /data/local/dt.py
 * fourier
 * pykalman
 
@@ -50,6 +50,3 @@ remember notes on /fin: data sources and datasets.
 Z or B?
 * Qlib, FinRL??
 
-## OrderExec:
-* tinkoff_api.
-* binance
