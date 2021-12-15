@@ -1,4 +1,4 @@
-def ff5(start_date = '2000' ):
+def five_factor(start_date = '2000' ):
     '''
     start_date: str, 
     returns pd.DataFrame
