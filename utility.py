@@ -14,27 +14,21 @@ def timer_func(func):
     return wrap_func
 
 
-@timer_func
-def read_h5(START = 2011,END = 2018):
-    import pandas as pd
-    DATA_STORE = '~/workshop/machine-learning-for-trading/data/assets.h5'
-    idx =pd.IndexSlice
-    with pd.HDFStore(DATA_STORE) as store:
-        print(store.info()) 
-        #result = (store['quandl/wiki/prices'].loc[idx[str(START):str(END), :], 'adj_close'].unstack('ticker')) # exec time 39s from HDD, 25s from SSD
-        #result = (store['engineered_features']) # time = 2.5s 
-        #result = (store['quandl/wiki/stocks']) # is in us_equities/stocks
-        #result = (store['sp500/fred']) #???
-
-        # company info: age, market cap, HQ location, etc. 
-        result = (store['sp500/stocks']) # seems better then us_equities/stocks, but no market cap
-        #result = store['us_equities/stocks']# ['marketcap', 'ipoyear', 'sector']] #time = 1s
-    return  result
+#@timer_func
 
 
 class Asset(object):
+    '''
+    data manipulation by asset
+    ticker immutable
+
+    '''
     # Assets: equity, FX, coin, 
-    def __init__(self, symbol):
-        self.symbol = symbol
-    def get_symbol(self):
-        return self.symbol
+    def __init__(self, ticker):
+        self.ticker = ticker
+        self.data_store = './data/local/store.h5'
+        self.yahoo_data_loc =  f'pdr/yahoo/{ticker}'
+    def get_ticker(self):
+        return self.ticker
+
+

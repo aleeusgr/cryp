@@ -13,23 +13,33 @@ from utility import *
 dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".split(sep = ', ')
 #stock = Asset(dk_discount[0])
 
-#df = read_h5()
-fama_french = ff5()
+#fama_french = ff5()
+#start, end = (fama_french.index[i].strftime('%Y-%m-%d') for i in(0,-1))
 
-#price data
-symbol = dk_discount[0]
-start, end = (fama_french.index[i].strftime('%Y-%m-%d') for i in(0,-1))
-df = pdr.DataReader(f'{symbol}', 'yahoo', start, end)
-df = df.resample('M').last()
-df['returns'] = df['Adj Close'].pct_change()
+class Equity(Asset):
+    def __init(self,ticker):
+        Asset.__init__(self,ticker)
+        self.yahoo_data_loc =  f'pdr/yahoo/{ticker}'
 
-fama_french[f'{symbol}'] = df.returns
+    def fetch_yahoo(self, start = '2020-01-31', end = '2021-10-31' ):
+        '''asset specific, use inheritance'''
 
+        import pandas as pd
+        import pandas_datareader as pdr
+        df = pdr.DataReader(f'{self.ticker}', 'yahoo', start, end)
+        df['returns'] = df['Adj Close'].pct_change()
 
-X = fama_french.iloc[1:,:-2].to_numpy()
-y = fama_french.iloc[1:,-1].to_numpy()
-import statsmodels.api as sm
-X_ols = sm.add_constant(X)
-model = sm.OLS(y, X_ols).fit()
-print(model.summary())
+        DATA_STORE = self.data_store
+        with pd.HDFStore(DATA_STORE) as store:
+            store.put(self.yahoo_data_loc, df)
 
+    def load_yahoo(self):
+        import pandas as pd
+        DATA_STORE = self.data_store
+        with pd.HDFStore(DATA_STORE) as store:
+            self.yahoo_data = store[self.yahoo_data_loc]
+    def get_yahoo_data(self):
+        return self.yahoo_data
+
+stock = Equity(dk_discount[0])
+stock.load_yahoo()

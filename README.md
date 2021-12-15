@@ -1,6 +1,8 @@
 # cryp, Roadmap
 
 ## Data, sources
+Macro datasets? <br>
+remember notes on /fin: data sources and datasets. 
 ### Fundamental
 * pandas_datareader Fama/French reg: OK
 * smartlab/interfax
