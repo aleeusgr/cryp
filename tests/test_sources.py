@@ -20,7 +20,13 @@ def test_binance():
     assert isinstance(data, pd.DataFrame)
 
 def test_ff5():
-    from  data.sources.fundamental.famafrench import ff5
+    from  data.sources.fundamental.famafrench import five_factor
     import pandas as pd
-    df = ff5()
+    df = five_factor()
     assert isinstance(df, pd.DataFrame)
+
+def test_yahoo():
+    from data.wrappers import Equity
+    s = Equity('AAPL')
+    import pandas as pd 
+    assert isinstance(s.fetch_prices(), pd.DataFrame)
