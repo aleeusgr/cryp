@@ -20,7 +20,7 @@ def test_binance():
     assert isinstance(data, pd.DataFrame)
 
 def test_ff5():
-    from  data.sources.famafrench import ff5
+    from  data.sources.fundamental.famafrench import ff5
     import pandas as pd
     df = ff5()
     assert isinstance(df, pd.DataFrame)
