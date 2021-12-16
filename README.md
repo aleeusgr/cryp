@@ -1,11 +1,18 @@
 # cryp, Roadmap
-1. decompose Equity, fetch -> data/sources/market/
-2. tests for fetch
-3. test Feng&Yulong
+
+###Backtest:
+* run
+* custom bundle
+* custom strategy: Feng&Yulong
+
+### F&Y
+* momentum: which?
+* investor attention
 
 ## Data, sources
 Macro datasets? <br>
 remember notes on /fin: data sources and datasets. 
+HDF5?? 
 ### Fundamental
 * pandas_datareader Fama/French reg: OK
 * smartlab/interfax
@@ -23,11 +30,11 @@ remember notes on /fin: data sources and datasets.
 ## Data, Cleaning:
 * pandas: OK
 * /data/local/dt.py
-* fourier
-* pykalman
+* denoising: pykalman, fourier
 
 ## Feature Engineering
-* momentum, value, investment, QmJ, # T/S momentum, Moscowitz 2012
+* momentum: OK
+* value, investment, QmJ, # T/S momentum, Moscowitz 2012
 * damodaran, : sector performance
 * remember Factor Zoo.
 
@@ -36,6 +43,7 @@ remember notes on /fin: data sources and datasets.
 * stumpy
 * ARCH, ARIMA
 * neural prohet
+* PyMC3, autoregressive
 
 ## Models:
 * FF5 for moex?
@@ -44,7 +52,7 @@ remember notes on /fin: data sources and datasets.
 * network effects: search  
 
 ## Backtesting
-* Zipline: ingest binance.
+* Zipline: custom data ingestion.
 * backtesting.py: OK
 * fixed time horizon performance vs entry point estimation
 Z or B?

@@ -15,6 +15,7 @@ dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".
 
 stock = Equity(dk_discount[0])
 
+
 # momentum at the daily and weekly frequencies
 stock.set_price_data(stock.get_price_data().resample('W').last())
 data = stock.get_price_data().loc[:, 'returns']
