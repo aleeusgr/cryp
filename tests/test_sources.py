@@ -12,7 +12,7 @@ def test_moex():
 def test_binance():
     
     import pandas as pd
-    from  data.sources.market import  binance 
+    from  data.sources.market import binance 
     import datetime
     print('datetime import required to run, fix')
     client = binance.auth()
@@ -26,7 +26,7 @@ def test_ff5():
     assert isinstance(df, pd.DataFrame)
 
 def test_yahoo():
-    from data.wrappers import Equity
+    from data.wrappers.equity import Equity
     s = Equity('AAPL')
     import pandas as pd 
     assert isinstance(s.fetch_prices(), pd.DataFrame)
