@@ -1,6 +1,6 @@
 def test_Equity():
 
-    from data.wrappers.equity import Equity
+    from data.primary import Equity
     s = Equity('IBM')
     import pandas as pd
     assert isinstance(s.get_price_data(),pd.DataFrame)

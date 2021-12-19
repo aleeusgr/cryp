@@ -6,7 +6,7 @@ def test_moex():
     assert isinstance(f, pd.DataFrame)
 
 def test_yahoo():
-    from data.wrappers.equity import Equity
+    from data.primary import Equity
     stock = Equity('IBM')
     import pandas as pd
     assert isinstance(stock.fetch_prices(), pd.DataFrame)

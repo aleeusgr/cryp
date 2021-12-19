@@ -1,18 +1,21 @@
-# cryp, Roadmap
+Roadmap
+# Tests that fail
 
-###Backtest:
+###Tasks:
+* debug and set binance pipeline
+* get daily data for a period of time
+* find out what method they use
+* replicate method
 * run
-* custom bundle
-* custom strategy: Feng&Yulong
 
 ### F&Y
+* 
 * momentum: which?
 * investor attention
 
 ## Data, sources
 Macro datasets? <br>
 remember notes on /fin: data sources and datasets. 
-HDF5?? 
 ### Fundamental
 * pandas_datareader Fama/French reg: OK
 * smartlab/interfax
@@ -27,8 +30,8 @@ HDF5??
 * sentiment
 * alt data for crypto?
 
-## Data, Cleaning:
-* pandas: OK
+## Data, various:
+* keep HDF5?
 * /data/local/dt.py
 * denoising: pykalman, fourier
 

@@ -8,7 +8,7 @@ import talib
 from  data.sources.market import binance 
 #from  data.sources.fundamental.famafrench import five_factor
 #import pandas_ta as ta
-from data.wrappers.equity import Equity, Coin
+from data.primary import Equity, Coin
 from data.wrappers.asset import Asset
 from utility import  timer_func
 

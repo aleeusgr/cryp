@@ -1,14 +1,3 @@
-def test_moex():
-    import data.sources.market.moex as mx
-    result = ()
-    it = mx.__dict__
-    for name in it:
-        testing = it[name]
-        if callable(testing):
-           print(f'testing {testing}')
-           result += it[name](),
-    assert all((type(i) for i in result)) != None
-    
 def test_binance():
     
     import pandas as pd
@@ -16,7 +5,7 @@ def test_binance():
     import datetime
     print('datetime import required to run, fix')
     client = binance.auth()
-    data = binance.fetch_candles(client)
+    data = binance.fetch_prices(client)
     assert isinstance(data, pd.DataFrame)
 
 def test_ff5():
@@ -26,7 +15,19 @@ def test_ff5():
     assert isinstance(df, pd.DataFrame)
 
 def test_yahoo():
-    from data.wrappers.equity import Equity
+    from data.primary import Equity
     s = Equity('AAPL')
     import pandas as pd 
     assert isinstance(s.fetch_prices(), pd.DataFrame)
+
+
+#def test_moex():
+#    import data.sources.market.moex as mx
+#    result = ()
+#    it = mx.__dict__
+#    for name in it:
+#        testing = it[name]
+#        if callable(testing):
+#           print(f'testing {testing}')
+#           result += it[name](),
+#    assert all((type(i) for i in result)) != None
