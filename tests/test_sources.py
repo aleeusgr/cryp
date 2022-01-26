@@ -1,12 +1,9 @@
 def test_binance():
-    
-    import pandas as pd
-    from  data.sources.market import binance 
-    import datetime
-    print('datetime import required to run, fix')
-    client = binance.auth()
-    data = binance.fetch_prices(client)
-    assert isinstance(data, pd.DataFrame)
+
+    from data.primary import Coin
+    s = Coin('BNBBTC')
+    import pandas as pd 
+    assert isinstance(s.fetch_prices(), pd.DataFrame)
 
 def test_ff5():
     from  data.sources.fundamental.famafrench import five_factor
@@ -16,7 +13,7 @@ def test_ff5():
 
 def test_yahoo():
     from data.primary import Equity
-    s = Equity('AAPL')
+    s = Equity('IBM')
     import pandas as pd 
     assert isinstance(s.fetch_prices(), pd.DataFrame)
 

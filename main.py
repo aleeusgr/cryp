@@ -14,8 +14,8 @@ from utility import  timer_func
 
 dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".split(sep = ', ')
 stock = Equity(dk_discount[0])
-coin = Coin('BNBBTC')
+#coin = Coin('BNBBTC')
 
-stock.show_momentum()
+#stock.show_momentum()
 #coin.show_momentum()
 

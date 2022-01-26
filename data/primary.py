@@ -5,10 +5,14 @@ class Equity(Asset):
 
         self.price_data_loc =  f'pdr/yahoo/{ticker}'
         Asset.__init__(self,ticker)
-        self.price_data['returns'] = self.price_data['Adj Close'].pct_change()
+        try:
+            self.load_prices()
+            self.price_data['returns'] = self.price_data['Adj Close'].pct_change()
+        except:
+            print('run fetch_prices')
 
     def fetch_prices(self, start = '2020-01-31', end = '2021-10-31' ):
-
+        '''load from web'''
         import pandas as pd
         import pandas_datareader as pdr
         if end == 'last':
@@ -23,6 +27,7 @@ class Coin(Asset):
 
         self.price_data_loc =  f'binance/{ticker}'
         Asset.__init__(self,ticker) 
+        self.load_prices()
         self.price_data['returns'] = self.price_data.loc[:,'Close']
 
     def fetch_prices(self, start = '2020-01-30', end = '2020-01-31' ):
