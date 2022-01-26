@@ -27,8 +27,11 @@ class Coin(Asset):
 
         self.price_data_loc =  f'binance/{ticker}'
         Asset.__init__(self,ticker) 
-        self.load_prices()
-        self.price_data['returns'] = self.price_data.loc[:,'Close']
+        try:
+            self.load_prices()
+            self.price_data['returns'] = self.price_data.loc[:,'Close'].pct_change()
+        except:
+            print('run fetch_prices')
 
     def fetch_prices(self, start = '2020-01-30', end = '2020-01-31' ):
         ''' loads, names columns,
@@ -38,16 +41,18 @@ class Coin(Asset):
         import datetime
         self.client = binance.auth()
         date_format = '%Y-%m-%d'
+        timeframe =  self.client.KLINE_INTERVAL_1MINUTE
         limit = 500
         start_date, end_date = [ datetime.datetime.strptime(i,date_format) for i in (start,end)]
 
         print(start_date,end_date)
         columns  = ['timestamp', 'Open', 'High', 'Low', 'Close', 'Volume', 'close_time', 'quote_av', 'trades', 'tb_base_av', 'tb_quote_av', 'ignore' ]
 
-        klines = self.client.get_historical_klines(self.ticker, self.client.KLINE_INTERVAL_1MINUTE, start_date.strftime('%d %b %Y %H:%M:%S'), end_date.strftime('%d %b %Y %H:%M:%S'), limit)
+        klines = self.client.get_historical_klines(self.ticker,timeframe , start_date.strftime('%d %b %Y %H:%M:%S'), end_date.strftime('%d %b %Y %H:%M:%S'), limit)
         data = pd.DataFrame(klines, columns = columns )
         data['timestamp'] = pd.to_datetime(data['timestamp'], unit='ms')
 
         data.set_index('timestamp', inplace=True)
         self.price_data = data 
+        self.save_prices_to_dataset()
         return data

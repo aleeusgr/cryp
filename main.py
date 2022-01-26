@@ -13,9 +13,8 @@ from data.wrappers.asset import Asset
 from utility import  timer_func
 
 dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".split(sep = ', ')
-stock = Equity(dk_discount[0])
-#coin = Coin('BNBBTC')
+#stock = Equity(dk_discount[0])
+coin = Coin('BNBBTC')
 
-#stock.show_momentum()
-#coin.show_momentum()
+df = coin.get_price_data()
 
