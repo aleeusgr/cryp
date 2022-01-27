@@ -3,6 +3,7 @@ from data.wrappers.asset import Asset
 class Equity(Asset):
     def __init__(self,ticker):
 
+        print('class instantiation is messed up, see if you can load custom ticker')
         self.price_data_loc =  f'pdr/yahoo/{ticker}'
         Asset.__init__(self,ticker)
         try:
@@ -27,11 +28,6 @@ class Coin(Asset):
 
         self.price_data_loc =  f'binance/{ticker}'
         Asset.__init__(self,ticker) 
-        try:
-            self.load_prices()
-            self.price_data['returns'] = self.price_data.loc[:,'Close'].pct_change()
-        except:
-            print('run fetch_prices')
 
     def fetch_prices(self, start = '2020-01-30', end = '2020-01-31' ):
         ''' loads, names columns,

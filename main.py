@@ -17,4 +17,11 @@ dk_discount = "IBM, ED, BEN, AFL, BDX, ADM, MMM, WBA, CAH, ABBV, SWK, ATO, NUE".
 coin = Coin('BNBBTC')
 
 df = coin.get_price_data()
+print(df.info())
 
+#prices = pd.to_numeric(df.loc[:,'Close'])
+#outlier_cutoff = 0.01 
+#data = pd.DataFrame() 
+#lags = [1, 2, 3, 6, 9, 12] 
+#for lag in lags:
+#    data[f'return_{lag}'] = prices.pct_change(lag)

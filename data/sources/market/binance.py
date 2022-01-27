@@ -1,4 +1,3 @@
-
 def read_key(file = 'binance'):
     key = {}
     with open(f'./data/keys/{file}') as f:
@@ -19,3 +18,9 @@ def auth():
     
     return client
 
+def all_tickers():
+    client = auth()
+    info = client.get_all_tickers()
+    return info
+
+    

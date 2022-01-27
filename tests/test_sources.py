@@ -1,10 +1,9 @@
 def test_binance():
-
-    from data.primary import Coin
-    s = Coin('BNBBTC')
-    import pandas as pd 
-    assert isinstance(s.fetch_prices(), pd.DataFrame)
-
+    from  data.sources.market import binance 
+    client = binance.auth()
+    info = client.get_all_tickers()
+    print(type(info))
+    assert isinstance(info, list)
 def test_ff5():
     from  data.sources.fundamental.famafrench import five_factor
     import pandas as pd
