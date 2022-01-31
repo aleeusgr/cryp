@@ -10,8 +10,15 @@ import pandas_datareader as pdr
 #import pandas_ta as ta
 from data.primary import Equity, Coin
 from data.wrappers.asset import Asset
-from utility import  timer_func, import_tickers
+from utility import  timer_func, read_portfolio
+from data.sources.market import moex
 
 
+df = read_portfolio()
 
+#obtain data from the market
+t = 0
+ticker = df.index[t]
+board = df.iloc[t,1]
 
+gh = moex.get_history(ticker, board)

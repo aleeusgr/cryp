@@ -2,7 +2,7 @@ import apimoex as mx
 import pandas as pd
 import requests
 
-def get_reference(n=0):
+def get_reference( n=0):
     '''
     placeholder reference by index. 
 
@@ -16,9 +16,8 @@ def get_reference(n=0):
 
 def get_tickers():
     '''
-    Only works with default values
     full list of tickers.
-    rewrite
+
     '''    
     engine = 'stock'
     market = 'shares'
@@ -38,10 +37,11 @@ def get_tickers():
         #df.to_csv('./data/moex_tickers.csv')
     return df
     
-def get_history(ticker='SNGSP'):    
-    '''rename, returns historical data for give ticker'''
+def get_history(ticker='SNGSP', board = 'TQTB'):    
+    '''historical data for given ticker'''
+    print('make sure to pass right board and ticker')
     with requests.Session() as session:
-        data = mx.get_board_history(session,ticker)
+        data = mx.get_board_history(session,security = ticker, board = board)
         df = pd.DataFrame(data)
         df.set_index('TRADEDATE', inplace=True)
     return df
