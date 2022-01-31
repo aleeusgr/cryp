@@ -12,5 +12,3 @@ from data.primary import Equity, Coin
 from data.wrappers.asset import Asset
 from utility import  timer_func, read_portfolio, fetch_portfolio
 
-
-prices, portfolio = fetch_portfolio()
