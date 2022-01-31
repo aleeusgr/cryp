@@ -13,6 +13,5 @@ from data.wrappers.asset import Asset
 from utility import  timer_func, import_tickers
 
 
-tickers = import_tickers()
 
 

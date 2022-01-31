@@ -13,9 +13,9 @@ def timer_func(func):
         return result
     return wrap_func
 
-def import_tickers():
-    '''Import data from my excel file
-    returns a list of tickers.
+def read_portfolio():
+    '''Import data from a proprietary excel file
+    returns a list of tickers separated into boards (MOEX API term), with amount held at last rebalancing point. 
     '''
     import pandas as pd
     df = pd.read_excel('./data/local/portfolio.xlsx') # this can be done from the cloud
