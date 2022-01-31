@@ -36,3 +36,20 @@ def read_portfolio():
         select.loc[select.index.isin(tickers[board]), 'board'] = board
     return select
 
+def fetch_portfolio():
+    '''this depends on read_portfolio, they should be in a same module'''
+    from data.sources.market import moex
+    last_rebalance_date = '2021-01-13'
+    portfolio = read_portfolio()
+    data = {}
+    #obtain data from the market
+    for ticker in portfolio.index:
+
+        board = portfolio.loc[ticker,'board']
+         
+        gh = moex.get_history(ticker, board, start = last_rebalance_date)
+        data[ticker] = gh.loc[:,'CLOSE'] 
+        
+        price_data = pd.DataFrame(data)
+
+    return price_data, portfolio 

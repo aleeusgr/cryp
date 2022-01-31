@@ -37,11 +37,11 @@ def get_tickers():
         #df.to_csv('./data/moex_tickers.csv')
     return df
     
-def get_history(ticker='SNGSP', board = 'TQTB'):    
+def get_history(ticker='SNGSP', board = 'TQTB', start = '2021-01-13'):    
     '''historical data for given ticker'''
     print('make sure to pass right board and ticker')
     with requests.Session() as session:
-        data = mx.get_board_history(session,security = ticker, board = board)
+        data = mx.get_board_history(session,security = ticker, board = board, start = start)
         df = pd.DataFrame(data)
         df.set_index('TRADEDATE', inplace=True)
     return df
