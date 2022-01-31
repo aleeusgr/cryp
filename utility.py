@@ -13,4 +13,26 @@ def timer_func(func):
         return result
     return wrap_func
 
+def import_tickers():
+    '''Import data from my excel file
+    returns a list of tickers.
+    '''
+    import pandas as pd
+    df = pd.read_excel('./data/local/portfolio.xlsx') # this can be done from the cloud
+    select = df.iloc[:1,3:13] 
+    select = select.T
+    select.rename(columns = {0:'amount'},inplace = True)
+    
+    #FYI
+    tickers = {
+        'TQTF' : list(df.iloc[0,3:11].index),
+        'TQTD' : list(df.iloc[0,11:13].index)
+        }
+
+    
+    select['board'] = 'nul'
+
+    for board in tickers.keys():
+        select.loc[select.index.isin(tickers[board]), 'board'] = board
+    return select
 
