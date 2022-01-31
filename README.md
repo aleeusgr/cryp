@@ -1,12 +1,9 @@
 Roadmap
-# Tests that fail
 
 ###Tasks:
-* debug and set binance pipeline
-* get daily data for a period of time
-* find out what method they use
-* replicate method
-* run
+* tests for Classes.
+* tests for moex.
+* 
 
 ### F&Y
 * 
